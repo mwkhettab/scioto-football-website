@@ -5,6 +5,7 @@ import AnnouncementsSection from "@/components/home/AnnouncementsSection";
 import SocialMediaSection from "@/components/home/SocialMediaSection";
 import SponsorsSection from "@/components/home/SponsorsSection";
 import ContactSection from "@/components/home/ContactSection";
+import NewslettersSection from "@/components/home/NewslettersSection";
 
 export default function Home() {
   return (
@@ -20,6 +21,9 @@ export default function Home() {
 
       {/* Sponsors */}
       <SponsorsSection />
+
+      {/* Newsletters */}
+      <NewslettersSection />
 
       {/* Contact */}
       <ContactSection />

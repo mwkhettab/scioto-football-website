@@ -41,18 +41,18 @@ const SponsorsSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full py-12 bg-white">
-      <h2 className="text-3xl font-oswald text-[#014321] text-center">
+    <div className="flex flex-col w-full py-12 bg-[#014321]">
+      <h2 className="text-3xl font-oswald text-white text-center">
         OUR SPONSORS
       </h2>
-      <p className="text-center text-lg font-oswald text-[#014321] mt-4">
+      <p className="text-center text-lg font-oswald text-white mt-4">
         We are grateful for the support of our sponsors. Please consider
         supporting them.
       </p>
       <div className="flex justify-center items-center mx-auto">
         {sponsorsLoading ? (
           <div className="h-48 flex justify-center items-center">
-            <CgSpinner className="animate-spin h-8 w-8 text-[#014321]" />
+            <CgSpinner className="animate-spin h-8 w-8 text-white" />
           </div>
         ) : sponsorsError ? (
           <p className="text-red-600 font-oswald text-lg">{sponsorsError}</p>
@@ -64,7 +64,7 @@ const SponsorsSection: React.FC = () => {
                 href={sponsor[3] == "https://#" ? "" : sponsor[3]}
                 key={sponsor[0]}
               >
-                <div className="flex flex-col items-center justify-center mx-4 my-10 h-48 border-2 bg-[#014321] hover:shadow-lg transform hover:scale-105 transition duration-300">
+                <div className="flex flex-col items-center justify-center mx-4 my-10 h-48 border-2 bg-white hover:shadow-lg transform hover:scale-105 transition duration-300">
                   <div className="flex items-center justify-center h-32">
                     <Image
                       src={`/images/sponsors/${sponsor[4]}`}
@@ -74,7 +74,7 @@ const SponsorsSection: React.FC = () => {
                       className="object-contain max-h-full"
                     />
                   </div>
-                  <p className="text-white font-oswald text-lg mt-2 text-center">
+                  <p className="text-[#014321] font-oswald text-lg mt-2 text-center">
                     {sponsor[1]}
                   </p>
                 </div>

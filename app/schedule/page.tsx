@@ -16,6 +16,7 @@ const Page = () => {
   const [loading, setLoading] = useState(true);
   const [schedule, setScheduleData] = useState<ScheduleRow[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [showPast, setShowPast] = useState(false);
 
   useEffect(() => {
     const fetchSchedule = async () => {
@@ -47,9 +48,10 @@ const Page = () => {
     fetchSchedule();
   }, [selectedTab]);
 
-  // Filter out past games
-  const rows = schedule.filter(
-    (row) => row[7] > new Date().toISOString().split("T")[0]
+  // Filter between past and future games
+  const today = new Date().toISOString().split("T")[0];
+  const rows = schedule.filter((row) =>
+    showPast ? row[7] <= today : row[7] > today
   );
 
   return (
@@ -57,7 +59,7 @@ const Page = () => {
       <div className="w-full max-w-6xl">
         <PageTitle title={`${selectedTab} Schedule`} />
 
-        <div className="w-full max-w-6xl mb-12 -mt-6">
+        <div className="w-full max-w-6xl mb-6 -mt-6">
           <Tabs
             tabs={tabs}
             selectedTab={selectedTab}
@@ -65,15 +67,36 @@ const Page = () => {
           />
         </div>
 
+        {/* Toggle Button */}
+        <div className="w-full max-w-6xl mb-6 flex justify-center">
+          <button
+            onClick={() => setShowPast(!showPast)}
+            className="bg-[#014321] text-white px-6 py-2 hover:bg-[#015a2a] transition-colors font-oswald uppercase"
+          >
+            {showPast ? "View Upcoming Games" : "View Past Games"}
+          </button>
+        </div>
+
         {loading ? (
           <Loading />
         ) : error ? (
           <Error errorMessage={error} />
         ) : (
-          <div className="grid grid-cols-2 gap-6 w-full max-w-6xl font-oswald ">
-            {rows.map((row, idx) => (
-              <ScheduleCard key={idx} row={row} isNextGame={idx === 0} />
-            ))}
+          <div className="grid grid-cols-2 gap-6 w-full max-w-6xl font-oswald">
+            {rows.length === 0 ? (
+              <div className="col-span-2 text-center text-gray-500 py-8">
+                No {showPast ? "past" : "upcoming"} games found.
+              </div>
+            ) : (
+              rows.map((row, idx) => (
+                <ScheduleCard
+                  key={idx}
+                  row={row}
+                  isNextGame={!showPast && idx === 0}
+                  isPastGame={showPast}
+                />
+              ))
+            )}
           </div>
         )}
       </div>
