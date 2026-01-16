@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit } from "@daveyplate/next-rate-limit";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { method, nextUrl, headers } = request;
   const pathname = nextUrl.pathname;
 
