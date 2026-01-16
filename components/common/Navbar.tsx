@@ -21,7 +21,7 @@ export default function Navbar() {
     { name: "STADIUM", href: "stadium" },
     { name: "HISTORY", href: "history" },
     { name: "MEDIA", href: "media" },
-    { name: "SHOP", href: "https://dublin-scioto-touchdown-club.square.site/" },
+    { name: "SHOP", href: "https://football.1stplacespiritwear.com/sites/OH/Dublin/Dublin%20Scioto%20High%20School" },
     { name: "LINKS", href: "links" },
     { name: "CONTACT", href: "contact" },
   ];
