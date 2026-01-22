@@ -1,10 +1,11 @@
 # Dublin Scioto High School Football Website
 
-Official website for Dublin Scioto High School Football.
+The official website for Dublin Scioto High School Football. 
 
 ## Tech Stack
 - Next.js
-- Full-stack JavaScript
+- TypeScript
+- Full-stack architecture (server-side rendering, API routes)
 
 ## Live Site
 https://sciotofootball.com
